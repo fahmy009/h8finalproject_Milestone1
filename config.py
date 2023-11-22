@@ -24,4 +24,4 @@ db = SQLAlchemy(app)
 
 # inisialisasi marsmallow
 
-ma - Marshmallow(app)
+ma = Marshmallow(app)
