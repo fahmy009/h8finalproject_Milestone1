@@ -1,0 +1,168 @@
+swagger: "2.0"
+info:
+  description: File Swagger ini adalah dokumentasi dari aplikasi 
+  version: "1.0.0"
+  title: Swagger File
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /api
+
+#path yang di support aplikasi server
+
+paths: 
+  /milestone:
+    get:
+      operationId: milestone.ambil_data
+      tags:
+        - Milestone
+      summary: Mengambil semua data milestone
+      description: Mengambil semua data milestone, dan di sortir berdasarkan kode prioritasnya
+      responses:
+        200:
+          description: Ambil semua data milestone sukses
+          schema:
+            type: array
+            items:
+              properties:
+                milestone_id:
+                  type: integer
+                  description: id dari data milestone
+                milestone_title:
+                  type: string
+                  description: judul dari milestone
+                milestone_description:
+                  type: string
+                  description: deskripsi dari milestone
+                milestone_priority:
+                  type: integer
+                  description: kode prioritas dari milestone
+                milestone_status:
+                  type: string 
+                  description: status dari milestone
+                milestone_timestamp:
+                  type: string
+                  description: waktu tambah atau update data milestone
+
+    post:
+      operationId: milestone.tambah_data
+      tags:
+        - Milestone
+      summary: Menambah data milestone
+      description: Menambah data milestone
+      parameters:
+        - name: milestone
+          in: body
+          description: data milestone yang akan di tambah
+          required: true
+          schema:
+            type: object
+            properties:
+              milestone_title:
+                  type: string
+                  description: judul dari milestone
+                milestone_description:
+                  type: string
+                  description: deskripsi dari milestone
+                milestone_priority:
+                  type: integer
+                  description: kode prioritas dari milestone
+                milestone_status:
+                  type: string 
+                  description: status dari milestone
+      responses:
+        201:
+          description: tambah data milestone sukses
+          schema:
+            properties:
+              milestone_id:
+                type: integer
+                description: id dari data milestone
+              milestone_title:
+                type: string
+                description: judul dari milestone
+              milestone_description:
+                type: string
+                description: deskripsi dari milestone
+              milestone_priority:
+                type: integer
+                description: kode prioritas dari milestone
+              milestone_status:
+                type: string 
+                description: status dari milestone
+              milestone_timestamp:
+                type: string
+                description: waktu tambah atau update data milestone
+
+    put:
+      operationId: milestone.update_data
+      tags:
+        - Milestone
+      summary: merubah data milestone
+      description: merubah data milestone
+      parameters:
+        - name: milestone_id
+          in: path
+          description: id milestone yang akan di update / dirubah
+          type: integer
+          required: true
+          schema:
+            type: object
+            properties:
+              milestone_title:
+                type: string
+                description: judul dari milestone
+              milestone_description:
+                type: string
+                description: deskripsi dari milestone
+              milestone_priority:
+                type: integer
+                description: kode prioritas dari milestone
+              milestone_status:
+                type: string 
+                description: status dari milestone
+      responses:
+        200:
+          description: update data milestone sukses
+          schema:
+            properties:
+              milestone_id:
+                type: integer
+                description: id dari data milestone
+              milestone_title:
+                type: string
+                description: judul dari milestone
+              milestone_description:
+                type: string
+                description: deskripsi dari milestone
+              milestone_priority:
+                type: integer
+                description: kode prioritas dari milestone
+              milestone_status:
+                type: string 
+                description: status dari milestone
+              milestone_timestamp:
+                type: string
+                description: waktu tambah atau update data milestone
+
+    put:
+      operationId: milestone.hapus_data
+      tags:
+        - Milestone
+      summary: menghapus data milestone
+      description: menghapus data milestone berdasarkan id
+      parameters:
+        - name: milestone_id
+          in: path
+          type: integer
+          description: id milestone yang akan di hapus
+          parameters:
+            - name: milestone_id
+              in: path
+              type: integer
+              description: id milestone yang akan di hapus
+      responses:
+        200:
+          description: hapus data milestone sukses
