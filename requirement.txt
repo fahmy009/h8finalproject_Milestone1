@@ -29,6 +29,7 @@ mysql-connector-python==8.2.0
 packaging==23.2
 protobuf==4.21.12
 pur==7.3.1
+PyMySQL==1.1.0
 python-dotenv==1.0.0
 python-multipart==0.0.6
 PyYAML==6.0.1
