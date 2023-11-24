@@ -10,8 +10,6 @@ produces:
 
 basePath: /api
 
-#path yang di support aplikasi server
-
 paths: 
   /milestone:
     get:
@@ -19,7 +17,7 @@ paths:
       tags:
         - Milestone
       summary: Mengambil semua data milestone
-      description: Mengambil semua data milestone, dan di sortir berdasarkan kode prioritasnya
+      description: Mengambil semua data milestone, dan diurutkan berdasarkan kode prioritasnya
       responses:
         200:
           description: Ambil semua data milestone sukses
@@ -55,23 +53,23 @@ paths:
       parameters:
         - name: milestone
           in: body
-          description: data milestone yang akan di tambah
+          description: data milestone yang akan ditambahkan
           required: true
           schema:
             type: object
             properties:
               milestone_title:
-                  type: string
-                  description: judul dari milestone
-                milestone_description:
-                  type: string
-                  description: deskripsi dari milestone
-                milestone_priority:
-                  type: integer
-                  description: kode prioritas dari milestone
-                milestone_status:
-                  type: string 
-                  description: status dari milestone
+                type: string
+                description: judul dari milestone
+              milestone_description:
+                type: string
+                description: deskripsi dari milestone
+              milestone_priority:
+                type: integer
+                description: kode prioritas dari milestone
+              milestone_status:
+                type: string 
+                description: status dari milestone
       responses:
         201:
           description: tambah data milestone sukses
@@ -100,13 +98,17 @@ paths:
       operationId: milestone.update_data
       tags:
         - Milestone
-      summary: merubah data milestone
-      description: merubah data milestone
+      summary: Merubah data milestone
+      description: Merubah data milestone
       parameters:
         - name: milestone_id
           in: path
-          description: id milestone yang akan di update / dirubah
+          description: id milestone yang akan diupdate/dirubah
           type: integer
+          required: true
+        - name: milestone
+          in: body
+          description: data milestone yang akan diupdate
           required: true
           schema:
             type: object
@@ -125,7 +127,7 @@ paths:
                 description: status dari milestone
       responses:
         200:
-          description: update data milestone sukses
+          description: Update data milestone sukses
           schema:
             properties:
               milestone_id:
@@ -147,22 +149,18 @@ paths:
                 type: string
                 description: waktu tambah atau update data milestone
 
-    put:
+    delete:
       operationId: milestone.hapus_data
       tags:
         - Milestone
-      summary: menghapus data milestone
-      description: menghapus data milestone berdasarkan id
+      summary: Menghapus data milestone
+      description: Menghapus data milestone berdasarkan id
       parameters:
         - name: milestone_id
           in: path
           type: integer
-          description: id milestone yang akan di hapus
-          parameters:
-            - name: milestone_id
-              in: path
-              type: integer
-              description: id milestone yang akan di hapus
+          description: id milestone yang akan dihapus
+          required: true
       responses:
         200:
-          description: hapus data milestone sukses
+          description: Hapus data milestone sukses

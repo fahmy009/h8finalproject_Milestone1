@@ -1,29 +1,21 @@
 # modul utama dari aplikasi
+import os
+from flask import redirect
+import config
 
-from flask import render_template
-import connexion
-
-# membuat inisiasi instance aplikasi
-app = connexion.App(__name__, specification_dir="./")
+app = config.connex_app
 
 # membaca swagger.yml untuk konfigurasi endpoint
 app.add_api("swagger.yml")
 
-
 # membuat route URL untuk aplikasi "/"
 @app.route("/")
 def home():
-    """
-    Fungsi ini akan menjalankan aplikasi di lokal dengan URL
-
-    localhost:5000
-
-    dan akan di return hasilnya dengan menggunakan rendered template 'home.html'
-    """
-
-    return render_template("home.html")
+    return redirect("/api/ui")
 
 
 # jika kita menggunakan mode stanc alone, aplikasi akan dijalankan
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0', port=int(os.getenv("PORT", default="5000")))
+
+
