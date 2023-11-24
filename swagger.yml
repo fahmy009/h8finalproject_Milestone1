@@ -43,7 +43,6 @@ paths:
                 milestone_timestamp:
                   type: string
                   description: waktu tambah atau update data milestone
-
     post:
       operationId: milestone.tambah_data
       tags:
@@ -92,8 +91,9 @@ paths:
                 description: status dari milestone
               milestone_timestamp:
                 type: string
-                description: waktu tambah atau update data milestone
+                description: waktu tambah atau update data milestone 
 
+  /milestone/{milestone_id}:
     put:
       operationId: milestone.update_data
       tags:
@@ -164,3 +164,5 @@ paths:
       responses:
         200:
           description: Hapus data milestone sukses
+
+    

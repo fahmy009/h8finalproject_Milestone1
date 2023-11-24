@@ -3,7 +3,6 @@ from config import db
 from models import Milestone, MilestoneSchema
 
 
-
 def ambil_data():
     # membuat list dari milstone dan di urutkan berdasarkan prioritasnya
     milestone = Milestone.query.order_by(Milestone.milestone_priority).all()

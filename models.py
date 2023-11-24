@@ -3,7 +3,7 @@ from config import db, ma
 
 
 class Milestone(db.Model):
-    __tablename__ = "milestone"
+    __tablename__ = 'milestone'
     milestone_id = db.Column(db.Integer, primary_key=True)
     milestone_title = db.Column(db.String(32))
     milestone_description = db.Column(db.String(32))
@@ -13,6 +13,6 @@ class Milestone(db.Model):
 
 
 class MilestoneSchema(ma.SQLAlchemyAutoSchema):
-    class meta:
+    class Meta:
         model = Milestone
         sqla_session = db.session
