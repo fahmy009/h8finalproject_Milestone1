@@ -60,7 +60,7 @@ Run the application:
 
 python3 app.py
 
-# Milstone API
+# Milestone API
 
 ## Overview
 
